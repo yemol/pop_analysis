@@ -1,3 +1,9 @@
+import Log from 'log'
+import config from '../config'
+
+const log = new Log(config.log)
+exports.log = log
+
 exports.contains = (arr, obj) => {
 	var i = arr.length
 	while (i--) {
@@ -17,4 +23,12 @@ exports.partlyContains = (arr, obj) => {
 		}
 	}
 	return false
+}
+
+exports.formatNum = (num) => {
+	num = num.replace(/\r/g, "")
+	num = num.replace(/\t/g, "")
+	num = num.replace(/\n/g, "")
+	num = num.replace(/,/g, "")
+	return num*1
 }

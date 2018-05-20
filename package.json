@@ -14,8 +14,8 @@
   "keywords": [
     "nodejs",
     "reptile",
-		"pop",
-		"analysis"
+    "pop",
+    "analysis"
   ],
   "author": "yemol <yemol@gamefy.cn>",
   "license": "ISC",
@@ -36,7 +36,10 @@
     "eslint-plugin-standard": "^3.0.1"
   },
   "dependencies": {
+    "axios": "^0.18.0",
     "cheerio": "^0.22.0",
+    "log": "^1.4.0",
+    "mysql": "^2.15.0",
     "request": "^2.81.0"
   }
 }

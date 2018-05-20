@@ -1,17 +1,57 @@
 export default {
-	links: {
-		text: ['下一頁', 'next'],
-		class: ['el-card-visual-content']
-	},
-	imagePattern: ['https://shadowverse-portal.com/image/card/zh-tw/', 'https://shadowverse-portal.com/image/card/en/'],
-	text: {
-		class: ['card']
-	},
-	deep: 2,
-	savePath: 'downloads_L',
-	url: 'https://shadowverse-portal.com',
-	path: '/cards',
+	sites: [
+		{
+			name: "Bilibili",
+			type: "video",
+			searchFor: "",
+			retunType: "json",
+			links: [
+				"https://space.bilibili.com/ajax/member/getSubmitVideos?mid=21838789&pagesize=50&tid=0&page=1&keyword=&order=pubdate",
+				"https://space.bilibili.com/ajax/member/getSubmitVideos?mid=21838789&pagesize=50&tid=0&page=2&keyword=&order=pubdate",
+				"https://space.bilibili.com/ajax/member/getSubmitVideos?mid=21838789&pagesize=50&tid=0&page=3&keyword=&order=pubdate",
+				"https://space.bilibili.com/ajax/member/getSubmitVideos?mid=21838789&pagesize=50&tid=0&page=4&keyword=&order=pubdate"
+			]
+		},
+		{
+			name: "douyu",
+			type: "video",
+			searchFor: "",
+			retunType: "json",
+			links: [
+				"https://v.douyu.com/video/author/getAuthorVideoListByNew?uid=4314&cate2_id=0&limit=50&page=1",
+				"https://v.douyu.com/video/author/getAuthorVideoListByNew?uid=4314&cate2_id=0&limit=50&page=2",
+				"https://v.douyu.com/video/author/getAuthorVideoListByNew?uid=4314&cate2_id=0&limit=50&page=3",
+				"https://v.douyu.com/video/author/getAuthorVideoListByNew?uid=4314&cate2_id=0&limit=50&page=4"
+			]
+		},
+		{
+			name: "huya",
+			type: "video",
+			searchFor: "ul.video-list li",
+			retunType: "html",
+			links: [
+				"http://v.huya.com/u/1544288349/video.html?p=1",
+				"http://v.huya.com/u/1544288349/video.html?p=2",
+				"http://v.huya.com/u/1544288349/video.html?p=3",
+				"http://v.huya.com/u/1544288349/video.html?p=4",
+				"http://v.huya.com/u/1544288349/video.html?p=5",
+				"http://v.huya.com/u/1544288349/video.html?p=6",
+				"http://v.huya.com/u/1544288349/video.html?p=7",
+				"http://v.huya.com/u/1544288349/video.html?p=8",
+				"http://v.huya.com/u/1544288349/video.html?p=9",
+				"http://v.huya.com/u/1544288349/video.html?p=10"
+			]
+		}
+	],
 	acceptLanguage: 'zh-CN,zh;q=0.8',
 	UserAgent: 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/57.0.2987.133 Safari/537.36',
-	Cookie: 'lang=zh-tw'
+	Cookie: '',
+	heartbeat: 2000,
+	log: "info",
+	mysql: {
+		host: '10.0.0.185',
+		username: "root",
+		password: "gamefy123",
+		database: "report"
+	}
 }
