@@ -41,6 +41,30 @@ export default {
 				"http://v.huya.com/u/1544288349/video.html?p=9",
 				"http://v.huya.com/u/1544288349/video.html?p=10"
 			]
+		},
+		{
+			name: "youku_o",
+			type: "video",
+			searchFor: "div.videos-list div.items div.va",
+			retunType: "html",
+			links: [
+				"http://i.youku.com/i/UMTAxMTA2MDY0/videos?order=1&page=1",
+				"http://i.youku.com/i/UMTAxMTA2MDY0/videos?order=1&page=2",
+				"http://i.youku.com/i/UMTAxMTA2MDY0/videos?order=1&page=3",
+				"http://i.youku.com/i/UMTAxMTA2MDY0/videos?order=1&page=4"
+			]
+		},
+		{
+			name: "youku_d",
+			type: "video",
+			searchFor: "div.videos-list div.items div.va",
+			retunType: "html",
+			links: [
+				"http://i.youku.com/i/UNTc4NTc2ODg4/videos?order=1&page=1",
+				"http://i.youku.com/i/UNTc4NTc2ODg4/videos?order=1&page=2",
+				"http://i.youku.com/i/UNTc4NTc2ODg4/videos?order=1&page=3",
+				"http://i.youku.com/i/UNTc4NTc2ODg4/videos?order=1&page=4"
+			]
 		}
 	],
 	acceptLanguage: 'zh-CN,zh;q=0.8',

@@ -11,7 +11,7 @@ exports.update = (items, from, type) => {
 	})
 	connection.connect()
 	for (let index in items) {
-		connection.query('call updateInfo("' + from + '", ' + type + ', "' + items[index].title + '", ' + items[index].play + ', "' + items[index].key + '");', function (error, results, fields) {
+		connection.query('call updateInfo(?,?,?,?,?,?);',[from, type, items[index].title, items[index].play, items[index].cover, items[index].key], function (error, results, fields) {
 			// error handle
 			if (error) throw error
 		})

@@ -4,6 +4,7 @@ import CachedList from './CachedList'
 import f_bilibili from './FetchBilibili'
 import f_douyu from './FetchDouyu'
 import f_huya from './FetchHuya'
+import f_youku from './FetchYouku'
 
 // cache used to save settings of all sites
 let sites = new CachedList()
@@ -33,6 +34,10 @@ function handleOneSite () {
 			case "huya":
 				huyaHandle(one)
 				break;
+			case "youku_o":
+			case "youku_d":			
+				youkuHandle(one)
+				break;
 			default:
 				// We will loop to next one if we cannot find its handle.
 				tools.log.warning("Site: " + one.name + " is not been handled!")
@@ -43,6 +48,18 @@ function handleOneSite () {
 		// all sites are done. we need to call callback method to send out notification.
 		if (back !== null )	back()
 	}
+}
+
+function youkuHandle(one){
+	// save all links under this site that we need to check
+	for (let index in one.links) {
+			f_youku.add(one.links[index])
+	}
+	// start checking links
+	f_youku.start(one.searchFor, (result) => {
+		// next one
+		setTimeout(handleOneSite, config.heartbeat);
+	})
 }
 
 function bilibiliHandle(one){

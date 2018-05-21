@@ -66,7 +66,8 @@ function fetchData (url, callback) {
 				videos.push({
 					"title": $(element).find("p.video-title").text(),
 					"play": tools.formatNum($(element).find("span.video-meta-pnum").text()),
-					"key": getKey($(element).find("a").attr("href"))
+					"key": getKey($(element).find("a").attr("href")),
+					"cover": $(element).find("img").attr("src")
 				})
 			})
 			tools.log.info("item number is: " + videos.length)

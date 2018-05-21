@@ -57,7 +57,8 @@ function fetchData (url, callback) {
 				videos.push({
 					"title": response.data.data.list[index].title,
 					"play": response.data.data.list[index].view_num,
-					"key": response.data.data.list[index].hash_id
+					"key": response.data.data.list[index].hash_id,
+					"cover": response.data.data.list[index].video_pic
 				})
 			}
 			tools.log.info("item number is: " + videos.length)

@@ -6,19 +6,21 @@ import CachedList from './CachedList'
 import config from '../config'
 
 // basic info this module
-const DATA_FROM = "bilibili"
+const DATA_FROM = "youku"
 const DATA_TYPE = 1
 // cache used to save all links of current site
 let links = new CachedList()
 // callback method used to return parent
 let back = null
+let search_for = null
 
 exports.add = (oneLink) => {
 	links.push(oneLink)
 }
 
-exports.start = (callback) => {
+exports.start = (searchfor, callback) => {
 	back = callback
+	search_for = searchfor
 	handleOneLink()
 }
 
@@ -39,6 +41,12 @@ function handleOneLink () {
 	}
 }
 
+function getKey(url) {
+	url = url.substr(url.lastIndexOf('/') + 1)
+	url = url.substr(0, url.lastIndexOf('.'))
+	return url
+}
+
 function fetchData (url, callback) {
 	tools.log.info("Searching url -> " + url)
 	var instance = axios.create({
@@ -53,20 +61,21 @@ function fetchData (url, callback) {
 	.then(function (response) {
 		if (response.status === 200) {
 			let videos = []
-			for(let index in response.data.data.vlist){
+			let $ = cheerio.load(response.data)
+			$(search_for).each((index, element) => {
 				videos.push({
-					"title": response.data.data.vlist[index].title,
-					"play": response.data.data.vlist[index].play,
-					"key": response.data.data.vlist[index].aid,
-					"cover": response.data.data.vlist[index].pic
+					"title": $(element).find("div.v-meta-title a").text(),
+					"play": tools.formatNum($(element).find("span.v-num").text()),
+					"key": getKey($(element).find("div.v-meta-title a").attr("href")),
+					"cover": $(element).find("div.v-thumb img").attr("src")
 				})
-			}
+			})
 			tools.log.info("item number is: " + videos.length)
 			if (callback !== null )	callback(videos)
 		}
 	})
-	.catch(function (err) {
-		tools.log.error(err)
+	.catch(function (error) {
+		tools.log.error(error)
 		if (callback !== null )	callback()
 	})
 }
