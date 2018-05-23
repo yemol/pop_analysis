@@ -5,6 +5,8 @@ import f_bilibili from './FetchBilibili'
 import f_douyu from './FetchDouyu'
 import f_huya from './FetchHuya'
 import f_youku from './FetchYouku'
+import f_qq from './FetchQQ'
+import f_aiqiyi from './FetchAiqiyi'
 
 // cache used to save settings of all sites
 let sites = new CachedList()
@@ -35,8 +37,15 @@ function handleOneSite () {
 				huyaHandle(one)
 				break;
 			case "youku_o":
-			case "youku_d":			
+			case "youku_d":
 				youkuHandle(one)
+				break;
+			case "qq_o":
+			case "qq_d":
+				qqHandle(one)
+				break;
+			case "aiqiyi":
+				aiqiyiHandle(one)
 				break;
 			default:
 				// We will loop to next one if we cannot find its handle.
@@ -48,6 +57,30 @@ function handleOneSite () {
 		// all sites are done. we need to call callback method to send out notification.
 		if (back !== null )	back()
 	}
+}
+
+function aiqiyiHandle(one){
+	// save all links under this site that we need to check
+	for (let index in one.links) {
+			f_aiqiyi.add(one.links[index])
+	}
+	// start checking links
+	f_aiqiyi.start((result) => {
+		// next one
+		setTimeout(handleOneSite, config.heartbeat);
+	})
+}
+
+function qqHandle(one){
+	// save all links under this site that we need to check
+	for (let index in one.links) {
+			f_qq.add(one.links[index])
+	}
+	// start checking links
+	f_qq.start((result) => {
+		// next one
+		setTimeout(handleOneSite, config.heartbeat);
+	})
 }
 
 function youkuHandle(one){

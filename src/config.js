@@ -65,6 +65,50 @@ export default {
 				"http://i.youku.com/i/UNTc4NTc2ODg4/videos?order=1&page=3",
 				"http://i.youku.com/i/UNTc4NTc2ODg4/videos?order=1&page=4"
 			]
+		},
+		{
+			name: "qq_o",
+			type: "video",
+			searchFor: "",
+			retunType: "json",
+			links: [
+				"http://c.v.qq.com/vchannelinfo?otype=json&uin=7306d7e4109ddadb73641ebb97994585&qm=1&pagenum=1&num=30&sorttype=0&orderflag=0",
+				"http://c.v.qq.com/vchannelinfo?otype=json&uin=7306d7e4109ddadb73641ebb97994585&qm=1&pagenum=2&num=30&sorttype=0&orderflag=0",
+				"http://c.v.qq.com/vchannelinfo?otype=json&uin=7306d7e4109ddadb73641ebb97994585&qm=1&pagenum=3&num=30&sorttype=0&orderflag=0",
+				"http://c.v.qq.com/vchannelinfo?otype=json&uin=7306d7e4109ddadb73641ebb97994585&qm=1&pagenum=4&num=30&sorttype=0&orderflag=0",
+				"http://c.v.qq.com/vchannelinfo?otype=json&uin=7306d7e4109ddadb73641ebb97994585&qm=1&pagenum=5&num=30&sorttype=0&orderflag=0",
+				"http://c.v.qq.com/vchannelinfo?otype=json&uin=7306d7e4109ddadb73641ebb97994585&qm=1&pagenum=6&num=30&sorttype=0&orderflag=0"
+			]
+		},
+		{
+			name: "qq_d",
+			type: "video",
+			searchFor: "",
+			retunType: "json",
+			links: [
+				"http://c.v.qq.com/vchannelinfo?otype=json&uin=7806c8c564e3ac7df120dc8a37aa61aa&qm=1&pagenum=1&num=30&sorttype=0&orderflag=0",
+				"http://c.v.qq.com/vchannelinfo?otype=json&uin=7806c8c564e3ac7df120dc8a37aa61aa&qm=1&pagenum=2&num=30&sorttype=0&orderflag=0",
+				"http://c.v.qq.com/vchannelinfo?otype=json&uin=7806c8c564e3ac7df120dc8a37aa61aa&qm=1&pagenum=3&num=30&sorttype=0&orderflag=0",
+				"http://c.v.qq.com/vchannelinfo?otype=json&uin=7806c8c564e3ac7df120dc8a37aa61aa&qm=1&pagenum=4&num=30&sorttype=0&orderflag=0",
+				"http://c.v.qq.com/vchannelinfo?otype=json&uin=7806c8c564e3ac7df120dc8a37aa61aa&qm=1&pagenum=5&num=30&sorttype=0&orderflag=0",
+				"http://c.v.qq.com/vchannelinfo?otype=json&uin=7806c8c564e3ac7df120dc8a37aa61aa&qm=1&pagenum=6&num=30&sorttype=0&orderflag=0"
+			]
+		},
+		{
+			name: "aiqiyi",
+			type: "video",
+			searchFor: "",
+			retunType: "json",
+			links: [
+				"http://pub.m.iqiyi.com/h5/bubble/pgcFeeds.json?circleId=212358747",
+				"http://pub.m.iqiyi.com/h5/bubble/pgcFeeds.json?circleId=212358747",
+				"http://pub.m.iqiyi.com/h5/bubble/pgcFeeds.json?circleId=212358747",
+				"http://pub.m.iqiyi.com/h5/bubble/pgcFeeds.json?circleId=212358747",
+				"http://pub.m.iqiyi.com/h5/bubble/pgcFeeds.json?circleId=212358747",
+				"http://pub.m.iqiyi.com/h5/bubble/pgcFeeds.json?circleId=212358747",
+				"http://pub.m.iqiyi.com/h5/bubble/pgcFeeds.json?circleId=212358747",
+				"http://pub.m.iqiyi.com/h5/bubble/pgcFeeds.json?circleId=212358747"		
+			]
 		}
 	],
 	acceptLanguage: 'zh-CN,zh;q=0.8',
