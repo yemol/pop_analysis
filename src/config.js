@@ -107,7 +107,16 @@ export default {
 				"http://pub.m.iqiyi.com/h5/bubble/pgcFeeds.json?circleId=212358747",
 				"http://pub.m.iqiyi.com/h5/bubble/pgcFeeds.json?circleId=212358747",
 				"http://pub.m.iqiyi.com/h5/bubble/pgcFeeds.json?circleId=212358747",
-				"http://pub.m.iqiyi.com/h5/bubble/pgcFeeds.json?circleId=212358747"		
+				"http://pub.m.iqiyi.com/h5/bubble/pgcFeeds.json?circleId=212358747"
+			]
+		},
+		{
+			name: "163",
+			type: "video",
+			searchFor: "",
+			retunType: "json",
+			links: [
+				"https://c.m.163.com/nc/subscribe/list/T1472186716135/video/0-200.html"
 			]
 		}
 	],

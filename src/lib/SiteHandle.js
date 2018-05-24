@@ -7,6 +7,7 @@ import f_huya from './FetchHuya'
 import f_youku from './FetchYouku'
 import f_qq from './FetchQQ'
 import f_aiqiyi from './FetchAiqiyi'
+import f_v163 from './FetchV163'
 
 // cache used to save settings of all sites
 let sites = new CachedList()
@@ -47,6 +48,9 @@ function handleOneSite () {
 			case "aiqiyi":
 				aiqiyiHandle(one)
 				break;
+			case "163":
+				v163Handle(one)
+				break;
 			default:
 				// We will loop to next one if we cannot find its handle.
 				tools.log.warning("Site: " + one.name + " is not been handled!")
@@ -57,6 +61,18 @@ function handleOneSite () {
 		// all sites are done. we need to call callback method to send out notification.
 		if (back !== null )	back()
 	}
+}
+
+function v163Handle(one){
+	// save all links under this site that we need to check
+	for (let index in one.links) {
+			f_v163.add(one.links[index])
+	}
+	// start checking links
+	f_v163.start((result) => {
+		// next one
+		setTimeout(handleOneSite, config.heartbeat);
+	})
 }
 
 function aiqiyiHandle(one){

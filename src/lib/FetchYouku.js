@@ -64,7 +64,7 @@ function fetchData (url, callback) {
 			let $ = cheerio.load(response.data)
 			$(search_for).each((index, element) => {
 				videos.push({
-					"title": $(element).find("div.v-meta-title a").text(),
+					"title": $(element).find("div.v-meta-title a").attr("title"),
 					"play": tools.formatNum($(element).find("span.v-num").text()),
 					"key": getKey($(element).find("div.v-meta-title a").attr("href")),
 					"cover": $(element).find("div.v-thumb img").attr("src")
