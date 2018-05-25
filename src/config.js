@@ -111,6 +111,18 @@ export default {
 			]
 		},
 		{
+			name: "sohu",
+			type: "video",
+			searchFor: "",
+			retunType: "json",
+			links: [
+				"https://my.tv.sohu.com/user/wm/ta/v.do?uid=180712077&pg=1&size=50&sortType=2",
+				"https://my.tv.sohu.com/user/wm/ta/v.do?uid=180712077&pg=2&size=50&sortType=2",
+				"https://my.tv.sohu.com/user/wm/ta/v.do?uid=180712077&pg=3&size=50&sortType=2",
+				"https://my.tv.sohu.com/user/wm/ta/v.do?uid=180712077&pg=4&size=50&sortType=2"
+			]
+		},
+		{
 			name: "163",
 			type: "video",
 			searchFor: "",

@@ -53,7 +53,8 @@ function fetchData (url, callback) {
 	.then(function (response) {
 		if (response.status === 200) {
 			let videos = []
-			for(let index in response.data.data.list){
+			let index = null
+			for(index in response.data.data.list){
 				videos.push({
 					"title": response.data.data.list[index].title,
 					"play": response.data.data.list[index].view_num,

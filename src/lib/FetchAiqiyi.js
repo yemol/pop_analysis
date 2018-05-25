@@ -62,14 +62,16 @@ function fetchData (url, callback) {
 		if (response.status === 200) {
 			let videos = []
 			let feedId = ""
-			for(let index in response.data.data.feeds){
-				if (response.data.data.feeds[index].tvTitle.length > 0 ){
+			let i = null
+			for(i in response.data.data.feeds){
+				if (response.data.data.feeds[i].tvTitle.length > 0 ){
 					videos.push({
-						"title": response.data.data.feeds[index].tvTitle,
-						"play": response.data.data.feeds[index].playCount,
-						"key": getKey(response.data.data.feeds[index].videoPlayUrl),
-						"cover": response.data.data.feeds[index].thumbnail
+						"title":response.data.data.feeds[i].tvTitle,
+						"play": response.data.data.feeds[i].playCount,
+						"key": getKey(response.data.data.feeds[i].videoPlayUrl),
+						"cover": response.data.data.feeds[i].thumbnail
 					})
+					feedId = response.data.data.feeds[i].feedId
 				}
 			}
 			tools.log.info("item number is: " + videos.length)

@@ -55,7 +55,8 @@ function fetchData (url, callback) {
 			let QZOutputJson = null
 			eval(response.data)
 			let videos = []
-			for(let index in QZOutputJson.videolst){
+			let index = null
+			for(index in QZOutputJson.videolst){
 				videos.push({
 					"title": QZOutputJson.videolst[index].title,
 					"play": QZOutputJson.videolst[index].play_count,

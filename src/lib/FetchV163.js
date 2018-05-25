@@ -47,7 +47,8 @@ function handleOneLink () {
 				})
 			}
 			tools.log.info("item number is: " + videos.length)
-			for (let index in videos){
+			let index = null
+			for (index in videos){
 				fetchData(videos[index], (result) => {
 					processedCount++
 					if (processedCount === videos.length ){
@@ -64,7 +65,7 @@ function handleOneLink () {
 
 function fetchData (item, callback) {
 	let url = DETAIL_URL + item.key + ".html"
-	tools.log.info("Searching url -> " + url)
+	// tools.log.info("Searching url -> " + url)
 	var instance = axios.create({
 		timeout: 100000,
 		headers: {
