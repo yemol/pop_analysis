@@ -73,7 +73,7 @@ function sohuHandle(one){
 			f_sohu.add(one.links[index])
 	}
 	// start checking links
-	f_sohu.start((result) => {
+	f_sohu.start(one.cookie, (result) => {
 		// next one
 		setTimeout(handleOneSite, config.heartbeat);
 	})

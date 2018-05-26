@@ -13,14 +13,16 @@ const DETAIL_URL = "https://vstat.v.blog.sohu.com/dostat.do?method=getVideoPlayC
 let links = new CachedList()
 // callback method used to return parent
 let back = null
+let myCookie = null
 let processedCount = 0
 
 exports.add = (oneLink) => {
 	links.push(oneLink)
 }
 
-exports.start = (callback) => {
+exports.start = (cookie, callback) => {
 	back = callback
+	myCookie = cookie
 	handleOneLink()
 }
 
@@ -29,11 +31,11 @@ function handleOneLink () {
 	if (one !== null) {
 		try{
 			//Handle one link and get data
-			fetchData (one, (result, ids) => {
+			fetchData (one, (videos, ids) => {
 				// get visited count info
-				fetchCount (result, ids, (result) => {
-					console.log(result.length)
-					database.update(result, DATA_FROM, DATA_TYPE)
+				fetchCount (videos, ids, () => {
+					console.log(videos.length)
+					database.update(videos, DATA_FROM, DATA_TYPE)
 					setTimeout(handleOneLink, config.heartbeat);
 				})
 			})
@@ -53,7 +55,7 @@ function fetchCount (videos, ids, callback) {
 		headers: {
 			'User-Agent': config.UserAgent,
 			'Accept-Language': 'zh-CN,zh;q=0.8',
-			'Cookie': config.Cookie
+			'Cookie': myCookie
 		}
 	})
 	instance.get(url)
@@ -74,7 +76,7 @@ function fetchCount (videos, ids, callback) {
 				}
 			}
 			tools.log.info("item number is: " + videos.length)
-			if (callback !== null )	callback(videos)
+			if (callback !== null )	callback()
 		}
 	})
 	.catch(function (err) {
@@ -90,7 +92,7 @@ function fetchData (url, callback) {
 		headers: {
 			'User-Agent': config.UserAgent,
 			'Accept-Language': 'zh-CN,zh;q=0.8',
-			'Cookie': config.Cookie
+			'Cookie': myCookie
 		}
 	})
 	instance.get(url)
@@ -98,7 +100,8 @@ function fetchData (url, callback) {
 		if (response.status === 200) {
 			let videos = []
 			let ids = ""
-			for(let index in response.data.data.list){
+			let index = null
+			for(index in response.data.data.list){
 				videos.push({
 					"title": response.data.data.list[index].title,
 					"play": 0,
@@ -106,6 +109,7 @@ function fetchData (url, callback) {
 					"cover": response.data.data.list[index].smallCover
 				})
 				ids += response.data.data.list[index].id + "|"
+				tools.log.info((index) + "|" + response.data.data.list[index].title)
 			}
 			tools.log.info("item number is: " + videos.length)
 			if (callback !== null )	callback(videos, ids)
