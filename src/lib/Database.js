@@ -18,3 +18,19 @@ exports.update = (items, from, type) => {
 	}
 	connection.end()
 }
+
+
+// items an array with title, play and key
+exports.addLivingInfo = (pBilibili, pDouyu, pHuya) => {
+	let connection = mysql.createConnection({
+	  host     : config.mysql.host,
+	  user     : config.mysql.username,
+	  password : config.mysql.password,
+	  database : config.mysql.database
+	})
+	connection.connect()
+	connection.query('call addLivingInfo(?,?,?);',[pBilibili, pDouyu, pHuya], function (error, results, fields) {
+		if (error) throw error
+	})
+	connection.end()
+}
