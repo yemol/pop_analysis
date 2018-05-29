@@ -131,6 +131,18 @@ export default {
 			links: [
 				"https://c.m.163.com/nc/subscribe/list/T1472186716135/video/0-200.html"
 			]
+		},
+		{
+			name: "toutiao",
+			type: "video",
+			searchFor: "",
+			retunType: "json",
+			links: [
+				"http://www.365yg.com/c/user/article/?user_id=6646873498&max_repin_time=0&count=50&page_type=0",
+				"http://www.365yg.com/c/user/article/?user_id=6646873498&max_repin_time=0&count=50&page_type=0",
+				"http://www.365yg.com/c/user/article/?user_id=6646873498&max_repin_time=0&count=50&page_type=0",
+				"http://www.365yg.com/c/user/article/?user_id=6646873498&max_repin_time=0&count=50&page_type=0"
+			]
 		}
 	],
 	acceptLanguage: 'zh-CN,zh;q=0.8',
