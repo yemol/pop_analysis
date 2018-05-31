@@ -143,6 +143,25 @@ export default {
 				"http://www.365yg.com/c/user/article/?user_id=6646873498&max_repin_time=0&count=50&page_type=0",
 				"http://www.365yg.com/c/user/article/?user_id=6646873498&max_repin_time=0&count=50&page_type=0"
 			]
+		},
+		{
+			name: "baidu",
+			type: "video",
+			searchFor: "",
+			retunType: "json",
+			cookie: "BAIDUID=5292003CDBBB9EEE48FA6FE27CDBBD4B:FG=1",
+			links: [
+				"https://author.baidu.com/list?type=article&context={%22offset%22:%22-1_0%22,%22app_id%22:%221567087506378008%22}",
+				"https://author.baidu.com/list?type=article&context={%22offset%22:%22-1_20%22,%22app_id%22:%221567087506378008%22}",
+				"https://author.baidu.com/list?type=article&context={%22offset%22:%22-1_40%22,%22app_id%22:%221567087506378008%22}",
+				"https://author.baidu.com/list?type=article&context={%22offset%22:%22-1_60%22,%22app_id%22:%221567087506378008%22}",
+				"https://author.baidu.com/list?type=article&context={%22offset%22:%22-1_80%22,%22app_id%22:%221567087506378008%22}",
+				"https://author.baidu.com/list?type=article&context={%22offset%22:%22-1_100%22,%22app_id%22:%221567087506378008%22}",
+				"https://author.baidu.com/list?type=article&context={%22offset%22:%22-1_120%22,%22app_id%22:%221567087506378008%22}",
+				"https://author.baidu.com/list?type=article&context={%22offset%22:%22-1_140%22,%22app_id%22:%221567087506378008%22}",
+				"https://author.baidu.com/list?type=article&context={%22offset%22:%22-1_160%22,%22app_id%22:%221567087506378008%22}",
+				"https://author.baidu.com/list?type=article&context={%22offset%22:%22-1_180%22,%22app_id%22:%221567087506378008%22}"
+			]
 		}
 	],
 	acceptLanguage: 'zh-CN,zh;q=0.8',

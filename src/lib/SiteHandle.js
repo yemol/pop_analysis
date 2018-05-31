@@ -10,6 +10,7 @@ import f_aiqiyi from './FetchAiqiyi'
 import f_v163 from './FetchV163'
 import f_sohu from './FetchSohu'
 import f_toutiao from './FetchToutiao'
+import f_baidu from './FetchBaidu'
 
 // cache used to save settings of all sites
 let sites = new CachedList()
@@ -30,34 +31,37 @@ function handleOneSite () {
 	if (one !== null) {
 		tools.log.info("Processing site: " + one.name)
 		switch (one.name) {
-			// case "Bilibili":
-			// 	bilibiliHandle(one)
-			// 	break;
-			// case "douyu":
-			// 	douyuHandle(one)
-			// 	break;
-			// case "huya":
-			// 	huyaHandle(one)
-			// 	break;
-			// case "youku_o":
-			// case "youku_d":
-			// 	youkuHandle(one)
-			// 	break;
-			// case "qq_o":
-			// case "qq_d":
-			// 	qqHandle(one)
-			// 	break;
-			// case "aiqiyi":
-			// 	aiqiyiHandle(one)
-			// 	break;
-			// case "163":
-			// 	v163Handle(one)
-			// 	break;
-			// case "sohu":
-			// 	sohuHandle(one)
-			// 	break;
+			case "Bilibili":
+				bilibiliHandle(one)
+				break;
+			case "douyu":
+				douyuHandle(one)
+				break;
+			case "huya":
+				huyaHandle(one)
+				break;
+			case "youku_o":
+			case "youku_d":
+				youkuHandle(one)
+				break;
+			case "qq_o":
+			case "qq_d":
+				qqHandle(one)
+				break;
+			case "aiqiyi":
+				aiqiyiHandle(one)
+				break;
+			case "163":
+				v163Handle(one)
+				break;
+			case "sohu":
+				sohuHandle(one)
+				break;
 			case "toutiao":
 				toutiaoHandle(one)
+				break;
+			case "baidu":
+				baiduHandle(one)
 				break;
 			default:
 				// We will loop to next one if we cannot find its handle.
@@ -69,6 +73,18 @@ function handleOneSite () {
 		// all sites are done. we need to call callback method to send out notification.
 		if (back !== null )	back()
 	}
+}
+
+function baiduHandle(one){
+	// save all links under this site that we need to check
+	for (let index in one.links) {
+			f_baidu.add(one.links[index])
+	}
+	// start checking links
+	f_baidu.start(one.cookie, (result) => {
+		// next one
+		setTimeout(handleOneSite, config.heartbeat);
+	})
 }
 
 function toutiaoHandle(one){
