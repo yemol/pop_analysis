@@ -169,6 +169,7 @@ export default {
 	Cookie: '',
 	heartbeat: 2000,
 	living: 5,
+	news: 30,
 	log: "info",
 	mysql: {
 		host: '10.0.0.185',
