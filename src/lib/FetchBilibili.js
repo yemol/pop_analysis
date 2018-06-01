@@ -59,6 +59,7 @@ function fetchData (url, callback) {
 					"title": response.data.data.vlist[index].title,
 					"play": response.data.data.vlist[index].play,
 					"key": response.data.data.vlist[index].aid,
+					"release": new Date(response.data.data.vlist[index].created*1000),
 					"cover": response.data.data.vlist[index].pic
 				})
 			}

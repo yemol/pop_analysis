@@ -106,10 +106,10 @@ function fetchData (url, callback) {
 					"title": response.data.data.list[index].title,
 					"play": 0,
 					"key": response.data.data.list[index].id,
+					"release": new Date(response.data.data.list[index].uploadTime),
 					"cover": response.data.data.list[index].smallCover
 				})
 				ids += response.data.data.list[index].id + "|"
-				tools.log.info((index) + "|" + response.data.data.list[index].title)
 			}
 			tools.log.info("item number is: " + videos.length)
 			if (callback !== null )	callback(videos, ids)

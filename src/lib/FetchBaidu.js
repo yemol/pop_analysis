@@ -58,12 +58,15 @@ function fetchData (url, callback) {
 			let videos = []
 			let index = null
 			for(index in response.data.data.items){
-				videos.push({
-					"title": response.data.data.items[index].title,
-					"play": response.data.data.items[index].read_amount,
-					"key": response.data.data.items[index].article_id,
-					"cover": response.data.data.items[index].cover_images[0].src
-				})
+				if (response.data.data.items[index].type === "video") {
+					videos.push({
+						"title": response.data.data.items[index].title,
+						"play": response.data.data.items[index].read_amount,
+						"key": response.data.data.items[index].article_id,
+						"release": new Date(response.data.data.items[index].created_at*1000),
+						"cover": response.data.data.items[index].cover_images == undefined ? null:response.data.data.items[index].cover_images[0].src
+					})
+				}
 			}
 			tools.log.info("item number is: " + videos.length)
 			if (callback !== null )	callback(videos)

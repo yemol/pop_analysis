@@ -47,6 +47,26 @@ function getKey(url) {
 	return url
 }
 
+function getDate(datetime) {
+	// console.log(datetime);
+	if (datetime.indexOf("昨天") >= 0) {
+		return new Date(new Date() - 24*60*60*1000)
+	}
+	if (datetime.indexOf("前天") >= 0) {
+		return new Date(new Date() - 2*24*60*60*1000)
+	}
+	if (datetime.indexOf("天前") >= 0) {
+		let days = datetime.replace("天前","")
+		return new Date(new Date() - days*24*60*60*1000)
+	}
+	if (datetime.split('-').length === 2) {
+		let date=new Date;
+		return new Date(date.getFullYear() + "-" + datetime)
+	} else {
+		return new Date(datetime)
+	}
+}
+
 function fetchData (url, callback) {
 	tools.log.info("Searching url -> " + url)
 	var instance = axios.create({
@@ -63,12 +83,15 @@ function fetchData (url, callback) {
 			let videos = []
 			let $ = cheerio.load(response.data)
 			$(search_for).each((index, element) => {
-				videos.push({
-					"title": $(element).find("div.v-meta-title a").attr("title"),
-					"play": tools.formatNum($(element).find("span.v-num").text()),
-					"key": getKey($(element).find("div.v-meta-title a").attr("href")),
-					"cover": $(element).find("div.v-thumb img").attr("src")
-				})
+				if ($(element).find("div.v-meta-title").text() !== " 【私密视频仅作者可看】 ") {
+					videos.push({
+						"title": $(element).find("div.v-link a").attr("title"),
+						"play": tools.formatNum($(element).find("span.v-num").text()),
+						"key": getKey($(element).find("div.v-link a").attr("href")),
+						"release": getDate($(element).find("span.v-publishtime").text()),
+						"cover": $(element).find("div.v-thumb img").attr("src")
+					})
+				}
 			})
 			tools.log.info("item number is: " + videos.length)
 			if (callback !== null )	callback(videos)

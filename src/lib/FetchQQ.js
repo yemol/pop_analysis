@@ -39,6 +39,16 @@ function handleOneLink () {
 	}
 }
 
+function getDate(datetime) {
+	if(datetime.indexOf("小时前") > 0) {
+		datetime = datetime.replace("小时前","")*1
+		console.log(new Date(new Date() - datetime*60*60*1000))
+		return new Date(new Date() - datetime*60*60*1000)
+	} else {
+		return new Date(datetime)
+	}
+}
+
 function fetchData (url, callback) {
 	tools.log.info("Searching url -> " + url)
 	var instance = axios.create({
@@ -61,6 +71,7 @@ function fetchData (url, callback) {
 					"title": QZOutputJson.videolst[index].title,
 					"play": QZOutputJson.videolst[index].play_count,
 					"key": QZOutputJson.videolst[index].vid,
+					"release": getDate(QZOutputJson.videolst[index].uploadtime),
 					"cover": QZOutputJson.videolst[index].pic
 				})
 			}

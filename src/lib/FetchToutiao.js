@@ -65,6 +65,7 @@ function fetchData (url, callback) {
 					"title": response.data.data[i].title,
 					"play": response.data.data[i].video_watch_count == null ? 0 : response.data.data[i].video_watch_count,
 					"key": response.data.data[i].item_id,
+					"release": new Date(response.data.data[i].behot_time*1000),
 					"cover": response.data.data[i].image_url
 				})
 			}

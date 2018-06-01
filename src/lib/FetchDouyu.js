@@ -59,6 +59,7 @@ function fetchData (url, callback) {
 					"title": response.data.data.list[index].title,
 					"play": response.data.data.list[index].view_num,
 					"key": response.data.data.list[index].hash_id,
+					"release": new Date(response.data.data.list[index].create_time*1000),					
 					"cover": response.data.data.list[index].video_pic
 				})
 			}

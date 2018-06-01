@@ -47,6 +47,14 @@ function getKey(url) {
 	return url
 }
 
+function getdate(src) {
+	let mark = src.indexOf("image/")
+	let dateStr = src.substr(mark+6, src.length - (mark+6))
+	mark = dateStr.indexOf("/")
+	dateStr = dateStr.substr(0, mark)
+	return new Date(dateStr.substr(0,4)*1 + "-" + dateStr.substr(4,2)*1 + "-" + dateStr.substr(6,2)*1)
+}
+
 function fetchData (url, callback) {
 	tools.log.info("Searching url -> " + url)
 	var instance = axios.create({
@@ -69,6 +77,7 @@ function fetchData (url, callback) {
 						"title":response.data.data.feeds[i].tvTitle,
 						"play": response.data.data.feeds[i].playCount,
 						"key": getKey(response.data.data.feeds[i].videoPlayUrl),
+						"release": getdate(response.data.data.feeds[i].thumbnail),
 						"cover": response.data.data.feeds[i].thumbnail
 					})
 					feedId = response.data.data.feeds[i].feedId

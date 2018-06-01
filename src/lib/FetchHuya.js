@@ -67,6 +67,7 @@ function fetchData (url, callback) {
 					"title": $(element).find("p.video-title").text(),
 					"play": tools.formatNum($(element).find("span.video-meta-pnum").text()),
 					"key": getKey($(element).find("a").attr("href")),
+					"release": new Date($(element).find("span.fltR").text()),
 					"cover": $(element).find("img").attr("src")
 				})
 			})
