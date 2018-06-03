@@ -3,7 +3,7 @@ import config from './config'
 import tools from './lib/tools'
 
 // lving will be recorded every 10 mins.
-// setInterval(function() {
+setInterval(function() {
 	for(let index in config.sites){
 		siteHandle.add(config.sites[index])
 	}
@@ -12,4 +12,4 @@ import tools from './lib/tools'
 		// callback method for all sites are done.
 		tools.log.info("All sites are finished!")
 	})
-// }, config.news * 60 * 1000);
+}, config.news * 60 * 1000);
