@@ -138,7 +138,7 @@ export default {
 				"https://c.m.163.com/nc/subscribe/list/T1472186716135/video/120-20.html",
 				"https://c.m.163.com/nc/subscribe/list/T1472186716135/video/140-20.html",
 				"https://c.m.163.com/nc/subscribe/list/T1472186716135/video/160-20.html",
-				"https://c.m.163.com/nc/subscribe/list/T1472186716135/video/180-20.html"				
+				"https://c.m.163.com/nc/subscribe/list/T1472186716135/video/180-20.html"
 			]
 		},
 		{
@@ -180,6 +180,7 @@ export default {
 	living: 5,
 	news: 30,
 	log: "info",
+
 	mysql: {
 		host: '10.0.0.185',
 		username: "root",

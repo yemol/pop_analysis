@@ -6,7 +6,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "babel-node src/index.js",
-    "living": "babel-node src/living.js"
+    "living": "babel-node src/living.js",
+		"heart": "babel-node src/Heart.js"
   },
   "repository": {
     "type": "git",
