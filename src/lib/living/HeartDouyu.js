@@ -42,7 +42,7 @@ function fetchData (callback) {
 	instance.get(checkURL)
 	.then(function (response) {
 		if (response.status === 200) {
-			if (callback !== null )	callback(response.data.data.room_status === "1")
+			if (callback !== null )	callback(response.data.data.room_status)
 		}
 	})
 	.catch(function (err) {

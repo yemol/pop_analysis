@@ -13,25 +13,25 @@ setInterval(function() {
 function getData(){
 	bilibili.start((result) => {
 		tools.log.info(result)
-		if (result) {
+		if (result === 1) {
 			douyu.start((result) => {
 				tools.log.info(result)
-				if (!result) {
-					sendWarning()
+				if (result !== "1") {
+					sendWarning("douyu_status_" + result)
 				} else {
 					tools.log.info("This loop is done.")
 				}
 			})
 		} else {
-			sendWarning()
+			sendWarning("bilibili_status_" + result)
 		}
 	})
 }
 
-function sendWarning(){
+function sendWarning(message){
 	tools.log.info("wanring")
 	if (!hasWarned) {
-		let url = config.sms
+		let url = config.sms.replace("[message]", message)
 		let instance = axios.create({
 			timeout: 100000
 		})
